@@ -3,6 +3,7 @@ package com.tasktree;
 public class NullPosition extends Position {
 
     private static NullPosition instance = null;
+
     private NullPosition( ) {
         super( -1 );
     }

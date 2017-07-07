@@ -25,12 +25,10 @@ public class TreeTaskTest {
     }
 
     @Test
-    public void getAllPegs() {
+    public void getAllPegs( ) {
 
 
     }
-
-
 
 
 }

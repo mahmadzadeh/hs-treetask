@@ -9,8 +9,7 @@ class FirstPeg extends Peg {
         super( Arrays.asList(
                 new Ball( 1, new Position( 0 ) ),
                 new Ball( 2, new Position( 1 )
-                ) )
-        );
+                ) ) );
     }
 
     @Override

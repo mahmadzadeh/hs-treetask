@@ -21,11 +21,13 @@ class Ball {
     }
 
     @Override
-    public boolean equals(Object obj ) {
-            if (obj == null) return false;
-            if (getClass() != obj.getClass()) return false;
-            final Ball other = (Ball) obj;
-            return Objects.equal(this.getNumber(), other.getNumber())
-                    && Objects.equal(this.getPosition(), other.getPosition());
+    public boolean equals( Object obj ) {
+        if ( obj == null ) return false;
+        if ( getClass() != obj.getClass() ) return false;
+
+        final Ball other = ( Ball ) obj;
+
+        return Objects.equal( this.getNumber(), other.getNumber() )
+                && Objects.equal( this.getPosition(), other.getPosition() );
     }
 }

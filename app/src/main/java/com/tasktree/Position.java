@@ -16,11 +16,11 @@ class Position {
 
     @Override
     public boolean equals( Object obj ) {
-        if (obj == null) return false;
-        if (getClass() != obj.getClass()) return false;
+        if ( obj == null ) return false;
+        if ( getClass() != obj.getClass() ) return false;
 
-        final Position other = (Position) obj;
-        return Objects.equal(this.getIndex(), other.getIndex());
+        final Position other = ( Position ) obj;
+        return Objects.equal( this.getIndex(), other.getIndex() );
     }
 
     @Override
