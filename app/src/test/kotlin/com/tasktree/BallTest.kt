@@ -1,9 +1,7 @@
 package com.tasktree
 
+import org.junit.Assert.*
 import org.junit.Test
-
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
 
 class BallTest {
 
@@ -24,6 +22,15 @@ class BallTest {
 
         assertFalse(ballOne == ballTwo)
         assertFalse(ballTwo == ballOne)
+    }
+
+    @Test
+    fun givenNewBallPositionThenMoveWillMoveBallToNewPosition() {
+
+        val ball = Ball(1, Position(9))
+        val newPosition = Position(1)
+
+        assertEquals( Ball(1, newPosition) , ball.moveTo(newPosition))
     }
 
 }

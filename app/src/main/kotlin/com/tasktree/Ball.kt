@@ -12,6 +12,11 @@ internal open class Ball(val number: Int, val position: Position) {
 
         return Objects.equal(this.number, other!!.number) && Objects.equal(this.position, other.position)
     }
+
+    fun moveTo(position: Position): Ball {
+        return Ball(this.number, position)
+    }
+
 }
 
 internal class NoBall(number: Int, position: Position) : Ball(number, position)

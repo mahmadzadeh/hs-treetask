@@ -2,9 +2,9 @@ package com.tasktree
 
 
 import org.junit.Assert
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Test
-import java.util.*
+import java.util.Arrays.asList
 
 class PegTest {
 
@@ -42,7 +42,7 @@ class PegTest {
     fun givenFirstPegWithNoBallsThenGetBallAtPositionReturnsNullBall() {
         val expectedNoBall = NoBall(11, Position(1))
 
-        peg = FirstPeg(Arrays.asList(NoBall(10, Position(0)), expectedNoBall))
+        peg = FirstPeg(asList(NoBall(10, Position(0)), expectedNoBall))
 
         assertEquals(expectedNoBall, peg.getBallAtPosition(Position(1)))
     }
@@ -50,12 +50,49 @@ class PegTest {
     @Test
     fun givenFirstPegWithNoBallsThenOpenPositionsReturnsListOfTwoOpenPositions() {
 
-        peg = FirstPeg(Arrays.asList(NoBall(10, Position(0)), NoBall(11, Position(1))))
+        peg = FirstPeg(asList(NoBall(10, Position(0)), NoBall(11, Position(1))))
 
         val positions = peg.openPositions()
 
         assertEquals(2, positions.size)
     }
 
+    @Test(expected = IllegalArgumentException::class)
+    fun givenBallInvalidPositionThenMoveBallToPositionThrowsRuntime() {
+        val invalidPosition = Position(2) // invalid position 2 for first peg
+        val ball = Ball(3, Position(8)) //move from position index 8 ( third peg ) to first peg
+
+        peg.moveBallToPosition(ball, invalidPosition)
+    }
+
+    @Test(expected = IllegalStateException::class)
+    fun givenNoFreeSlotExistInFirstPegThenMoveBallToPositionThrowsRuntime() {
+
+        val validPosition = Position(0)
+        val ball =  Ball(3, Position(8))
+
+        peg.moveBallToPosition( ball, validPosition)
+    }
+
+    @Test
+    fun givenFirstPegDoesNotHaveOpenSlotAtPositionThenHasOpenPositionAtReturnsFalse() {
+        assertFalse( peg.hasOpenSlotAt(Position(0)))
+    }
+
+    @Test
+    fun givenFirstPegWhenItHasFreeSlotInPositionOneThenHasOpenPositionAtReturnsTrue() {
+
+        peg = FirstPeg(asList(Ball(1, Position(0)), NoBall(11,Position(1))))
+
+        assertTrue( peg.hasOpenSlotAt(Position(1)))
+    }
+
+    @Test
+    fun givenFirstPegWhenItHasTwoFreeSlotInPositionOneThenHasOpenPositionAtReturnsTrue() {
+
+        peg = FirstPeg(asList(NoBall(12,Position(0)), NoBall(11,Position(1))))
+
+        assertTrue( peg.hasOpenSlotAt(Position(1)))
+    }
 
 }
