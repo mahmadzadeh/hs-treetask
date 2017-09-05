@@ -35,8 +35,6 @@ internal class FirstPeg(list: List<Ball> = asList(Ball(1, Position(0)), Ball(2, 
         if (!hasFreeSlotToAccommodate(newPosition)) {
             throw IllegalStateException("can't move ball $ball to new position $newPosition")
         }
-
-
     }
 
     private fun hasFreeSlotToAccommodate(newPosition: Position) = openPositions().contains(newPosition)
